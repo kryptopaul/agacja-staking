@@ -1,14 +1,27 @@
+import { Box, Container, Grid, GridItem } from "@chakra-ui/react";
+import { useEffect } from "react";
 import {
-  Box,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Button,
   Card,
   CardBody,
-  Container,
-  Grid,
-  GridItem,
+  Code,
+  Flex,
+  FormControl,
+  FormErrorMessage,
   Heading,
-  Button,
+  HStack,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  VStack,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
+import { useForm } from "react-hook-form";
 
 import { EventListenersCard } from "../components/EventListeners/EventListenersCard";
 import { WIDTH_2XL } from "../components/Layout";
@@ -57,8 +70,15 @@ export default function Home() {
         >
           <Card shadow={"lg"}>
             <CardBody>
-              <Heading>Create token</Heading>
-              <Button type="submit" mt={4}>
+              <Heading mb={4}>Create token</Heading>
+              <FormControl>
+                <InputGroup size="sm">
+                  <InputLeftAddon>NFT Contract</InputLeftAddon>
+                  <Input />
+                </InputGroup>
+                <FormErrorMessage>error</FormErrorMessage>
+              </FormControl>
+              <Button type="submit" mt={4} mb={4}>
                 Submit
               </Button>
             </CardBody>
