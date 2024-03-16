@@ -30,7 +30,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <Box minH="100vh" bg="#EFC950">
-      <Box as="header" shadow="lg" py={6} bg="#EFC950" color="#E1D7D5">
+      <Box as="header" shadow="lg" py={6} bg="#EFC950" color="whiteAlpha.900">
         <Container maxW={WIDTH_2XL}>
           <Flex justifyContent="space-between" alignItems="center">
             <Heading>Agacja Staking</Heading>
