@@ -38,7 +38,7 @@ export function Layout({ children }: LayoutProps) {
               alignItems: 'center',
             }}>
               <img src="/assets/2_Glasses/glasses-square-watermelon.png" width="150px"/>
-              Good Memes Only - Token Factory
+              Good Meme Only - Token Factory
             </Heading>
             <Flex justifyContent="space-between" alignItems="center" gap={4}>
               <Menu>

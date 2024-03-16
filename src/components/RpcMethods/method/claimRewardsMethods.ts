@@ -1,7 +1,7 @@
 import { RpcRequestInput } from "./RpcRequestInput";
 
 const ethSendTransaction: RpcRequestInput = {
-  name: "Stake NFT Method",
+  name: "Create Token Method",
   method: "eth_sendTransaction",
   params: [
     { key: "from", required: true },
@@ -19,4 +19,4 @@ const ethSendTransaction: RpcRequestInput = {
   ],
 };
 
-export const stakeNFTmethods = [ethSendTransaction];
+export const claimRewardsMethods = [ethSendTransaction];

@@ -39,6 +39,8 @@ import { sendShortcutsMap } from "../components/RpcMethods/shortcut/sendShortcut
 import { ShortcutType } from "../components/RpcMethods/shortcut/ShortcutType";
 import { signMessageShortcutsMap } from "../components/RpcMethods/shortcut/signMessageShortcuts";
 import { useCBWSDK } from "../context/CBWSDKReactContextProvider";
+import { stakeNFTmethods } from "../components/RpcMethods/method/stakeNFTMethods";
+import { claimRewardsMethods } from "../components/RpcMethods/method/claimRewardsMethods";
 
 export default function Home() {
   const { provider } = useCBWSDK();
@@ -59,7 +61,8 @@ export default function Home() {
 
   return (
     <Container maxW={WIDTH_2XL} mb={8}>
-      <Box display={'flex'} flexDir={'row'} gap={10}>
+      <Box display={"flex"} flexDir={"row"} gap={10}>
+        <MethodsSection title="Wallet Connection" name="Connect Wallet" methods={connectionMethods} />
         <MethodsSection
           title="Create Token"
           name="Create Token"
@@ -68,14 +71,14 @@ export default function Home() {
         />
         <MethodsSection
           title="Stake NFT"
-          name="Create Token"
-          methods={createTokenMethods}
+          name="Stake NFT"
+          methods={stakeNFTmethods}
           shortcutsMap={multiChainShortcutsMap}
         />
         <MethodsSection
           title="Claim Rewards"
-          name="Create Token"
-          methods={createTokenMethods}
+          name="Claim Rewards"
+          methods={claimRewardsMethods}
           shortcutsMap={multiChainShortcutsMap}
         />
       </Box>
@@ -95,12 +98,9 @@ function MethodsSection({
   shortcutsMap?: Record<string, ShortcutType[]>;
 }) {
   return (
-    <Box mt={4} >
+    <Box mt={4} width={1000}>
       <Heading size="md">{title}</Heading>
-      <Grid
-        mt={2}
-        gap={2}
-      >
+      <Grid mt={2} gap={2}>
         {methods.map((rpc) => (
           <GridItem w="100%" key={rpc.method}>
             <RpcMethodCard

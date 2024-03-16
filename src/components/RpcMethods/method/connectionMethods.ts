@@ -5,9 +5,4 @@ const ethRequestAccounts: RpcRequestInput = {
   params: [],
 };
 
-const ethAccounts: RpcRequestInput = {
-  method: 'eth_accounts',
-  params: [],
-};
-
-export const connectionMethods = [ethRequestAccounts, ethAccounts];
+export const connectionMethods = [ethRequestAccounts];
