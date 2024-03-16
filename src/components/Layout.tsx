@@ -1,4 +1,4 @@
-import { CheckIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -9,15 +9,15 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import { useCBWSDK } from '../context/CBWSDKReactContextProvider';
+import { useCBWSDK } from "../context/CBWSDKReactContextProvider";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const WIDTH_2XL = '1536px';
+export const WIDTH_2XL = "1536px";
 
 export function Layout({ children }: LayoutProps) {
   const { provider, connectionPreference, setPreference } = useCBWSDK();
@@ -33,18 +33,28 @@ export function Layout({ children }: LayoutProps) {
       <Box as="header" shadow="lg" py={6} bg="#EFC950" color="whiteAlpha.900">
         <Container maxW={WIDTH_2XL}>
           <Flex justifyContent="space-between" alignItems="center">
-            <Heading>Agacja Staking</Heading>
+            <Heading sx={{
+              display: 'flex',
+              alignItems: 'center',
+            }}>
+              <img src="/assets/2_Glasses/glasses-square-watermelon.png" width="150px"/>
+              Good Memes Only - Token Factory
+            </Heading>
             <Flex justifyContent="space-between" alignItems="center" gap={4}>
               <Menu>
                 {/* <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
                   {`Mode: ${connectionPreference}`}
                 </MenuButton> */}
                 <MenuList>
-                  {['default', 'embedded'].map((preference) => (
+                  {["default", "embedded"].map((preference) => (
                     <MenuItem
-                      color={'MenuText'}
+                      color={"MenuText"}
                       key={preference}
-                      icon={preference === connectionPreference ? <CheckIcon /> : null}
+                      icon={
+                        preference === connectionPreference ? (
+                          <CheckIcon />
+                        ) : null
+                      }
                       onClick={() => setPreference(preference)}
                     >
                       {preference}

@@ -30,6 +30,7 @@ import { multiChainMethods } from "../components/RpcMethods/method/multiChainMet
 import { readonlyJsonRpcMethods } from "../components/RpcMethods/method/readonlyJsonRpcMethods";
 import { RpcRequestInput } from "../components/RpcMethods/method/RpcRequestInput";
 import { sendMethods } from "../components/RpcMethods/method/sendMethods";
+import { createTokenMethods } from "../components/RpcMethods/method/createTokenMethods";
 import { signMessageMethods } from "../components/RpcMethods/method/signMessageMethods";
 import { RpcMethodCard } from "../components/RpcMethods/RpcMethodCard";
 import { multiChainShortcutsMap } from "../components/RpcMethods/shortcut/multipleChainShortcuts";
@@ -58,105 +59,52 @@ export default function Home() {
 
   return (
     <Container maxW={WIDTH_2XL} mb={8}>
-      <Box>
-        <Grid
-          mt={2}
-          templateColumns={{
-            base: "100%",
-            md: "repeat(2, 50%)",
-            xl: "repeat(3, 33%)",
-          }}
-          gap={2}
-        >
-          <Card shadow={"lg"}>
-            <CardBody>
-              <Heading mb={4}>Create token</Heading>
-              <FormControl>
-                <InputGroup size="sm">
-                  <InputLeftAddon>NFT Contract</InputLeftAddon>
-                  <Input />
-                </InputGroup>
-                <FormErrorMessage>error</FormErrorMessage>
-              </FormControl>
-              <Button type="submit" mt={4} mb={4}>
-                Submit
-              </Button>
-            </CardBody>
-          </Card>
-          <Card shadow={"lg"}>
-            <CardBody>
-              <Heading>Stake NFT</Heading>
-              <Button type="submit" mt={4}>
-                Submit
-              </Button>
-            </CardBody>
-          </Card>
-          <Card shadow={"lg"}>
-            <CardBody>
-              <Heading>Claim Reward</Heading>
-              <Button type="submit" mt={4}>
-                Submit
-              </Button>
-            </CardBody>
-          </Card>
-        </Grid>{" "}
-        <Grid mt={2} templateColumns={{ base: "100%" }} gap={2}>
-          <EventListenersCard />
-        </Grid>
+      <Box display={'flex'} flexDir={'row'} gap={10}>
+        <MethodsSection
+          title="Create Token"
+          name="Create Token"
+          methods={createTokenMethods}
+          shortcutsMap={multiChainShortcutsMap}
+        />
+        <MethodsSection
+          title="Stake NFT"
+          name="Create Token"
+          methods={createTokenMethods}
+          shortcutsMap={multiChainShortcutsMap}
+        />
+        <MethodsSection
+          title="Claim Rewards"
+          name="Create Token"
+          methods={createTokenMethods}
+          shortcutsMap={multiChainShortcutsMap}
+        />
       </Box>
-      <MethodsSection title="Wallet Connection" methods={connectionMethods} />
-      {connected && (
-        <>
-          <MethodsSection
-            title="Switch/Add Chain"
-            methods={multiChainMethods}
-            shortcutsMap={multiChainShortcutsMap}
-          />
-          <MethodsSection
-            title="Sign Message"
-            methods={signMessageMethods}
-            shortcutsMap={signMessageShortcutsMap(provider?.chainId)}
-          />
-          <MethodsSection
-            title="Send"
-            methods={sendMethods}
-            shortcutsMap={sendShortcutsMap}
-          />
-          <MethodsSection
-            title="Read-only JSON-RPC Requests"
-            methods={readonlyJsonRpcMethods}
-            shortcutsMap={readonlyJsonRpcShortcutsMap}
-          />
-        </>
-      )}
     </Container>
   );
 }
 
 function MethodsSection({
   title,
+  name,
   methods,
   shortcutsMap,
 }: {
   title: string;
+  name?: string;
   methods: RpcRequestInput[];
   shortcutsMap?: Record<string, ShortcutType[]>;
 }) {
   return (
-    <Box mt={4}>
+    <Box mt={4} >
       <Heading size="md">{title}</Heading>
       <Grid
         mt={2}
-        templateColumns={{
-          base: "100%",
-          md: "repeat(2, 50%)",
-          xl: "repeat(3, 33%)",
-        }}
         gap={2}
       >
         {methods.map((rpc) => (
           <GridItem w="100%" key={rpc.method}>
             <RpcMethodCard
+              name={name}
               method={rpc.method}
               params={rpc.params}
               format={rpc.format}

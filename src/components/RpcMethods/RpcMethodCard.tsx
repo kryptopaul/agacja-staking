@@ -27,7 +27,7 @@ import { ADDR_TO_FILL } from './shortcut/const';
 
 type ResponseType = string;
 
-export function RpcMethodCard({ format, method, params, shortcuts }) {
+export function RpcMethodCard({ name, format, method, params, shortcuts }) {
   const [response, setResponse] = React.useState<Response | null>(null);
   const [verifyResult, setVerifyResult] = React.useState<string | null>(null);
   const [error, setError] = React.useState<Record<string, unknown> | string | number | null>(null);
@@ -96,7 +96,7 @@ export function RpcMethodCard({ format, method, params, shortcuts }) {
       <CardBody>
         <Flex align="center" justify="space-between">
           <Heading as="h2" size="lg">
-            <Code>{method}</Code>
+            <Code>{name ?? method}</Code>
           </Heading>
           <Button type="submit" mt={4}>
             Submit

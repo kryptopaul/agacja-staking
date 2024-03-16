@@ -31,7 +31,7 @@ export function CBWSDKReactContextProvider({ children }: CBWSDKProviderProps) {
 
   useEffect(() => {
     const cbwsdk = new CoinbaseWalletSDK({
-      appName: 'SDK Playground',
+      appName: 'Good Memes Only',
       connectionPreference: connectionPreference ?? 'default',
       chainIds: ["84532"]
 
