@@ -1,0 +1,12 @@
+body {
+    background-color: #EFC950; /* Change the hex color code to the desired color */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Optional: Adding a background color to the container */
+}
